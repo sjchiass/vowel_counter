@@ -11,24 +11,28 @@ batch_size = 32
 
 train_ds = tf.keras.preprocessing.image_dataset_from_directory(
     "./images",
+	labels="inferred",
+	label_mode="int",
+	class_names=["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"],
     validation_split=0.2,
     subset="training",
     seed=1,
     color_mode="grayscale",
     image_size=image_size,
     batch_size=batch_size,
-    label_mode = 'categorical',
 )
 
 val_ds = tf.keras.preprocessing.image_dataset_from_directory(
     "./images",
+	labels="inferred",
+	label_mode="int",
+	class_names=["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"],
     validation_split=0.2,
     subset="validation",
     seed=1,
     color_mode="grayscale",
     image_size=image_size,
     batch_size=batch_size,
-    label_mode = 'categorical',
 )
 
 train_ds = train_ds.prefetch(buffer_size=32)
@@ -83,14 +87,14 @@ def make_model(input_shape, num_classes):
 model = make_model(input_shape=image_size + (1,), num_classes=12)
 keras.utils.plot_model(model, show_shapes=True)
 
-epochs = 5
+epochs = 10
 
 callbacks = [
     keras.callbacks.ModelCheckpoint("more_save_at_{epoch}.h5"),
 ]
 model.compile(
     optimizer=keras.optimizers.Adam(1e-3),
-    loss="categorical_crossentropy",
+    loss="sparse_categorical_crossentropy",
     metrics=["accuracy"],
 )
 model.fit(
