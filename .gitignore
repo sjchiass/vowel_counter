@@ -1,0 +1,5 @@
+*.png
+*.h5
+__pycache__
+myenv
+images
