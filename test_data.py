@@ -6,7 +6,7 @@ from tensorflow.keras import layers
 # flow: https://keras.io/examples/vision/image_classification_from_scratch/
 # model: https://keras.io/examples/vision/mnist_convnet/
 
-image_size = (15, 125)
+image_size = (16, 160)
 batch_size = 32
 
 train_ds = tf.keras.preprocessing.image_dataset_from_directory(

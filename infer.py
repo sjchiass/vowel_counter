@@ -12,18 +12,13 @@ args = parser.parse_args()
 
 model = keras.models.load_model(args.model)
 
-out = Image.new("RGB", (125, 15), (255, 255, 255))
-
-# get a drawing context
+out = Image.new("L", (150, 16), 255)
 d = ImageDraw.Draw(out)
-
-# draw multiline text
-d.text((0, 0), args.word.upper(), fill=(0, 0, 0))
-
+d.text((75-2.75*len(args.word), 2), args.word.upper(), fill=0)
 out.save("./test.png")
 
 img = keras.preprocessing.image.load_img(
-    "test.png", target_size=(15,125), color_mode="grayscale"
+    "test.png", target_size=(16,150), color_mode="grayscale"
 )
 img_array = keras.preprocessing.image.img_to_array(img)
 img_array = tf.expand_dims(img_array, 0)  # Create batch axis
