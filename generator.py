@@ -3,6 +3,7 @@
 
 #import nltk
 #nltk.download('words')
+from vowelize import vowelize
 import os
 from PIL import Image, ImageDraw, ImageFont
 from nltk.corpus import words
@@ -21,9 +22,7 @@ for w in english_words:
         os.makedirs(f"images/{v}")
 
 for w in english_words:
-    v = sum(1 for x in w if x in vowels)
-    if v == 0 and "Y" in w:
-        v = 1
+    v = vowelize(w)
     out = Image.new("L", (150, 16), 255)
     d = ImageDraw.Draw(out)
     d.text((75-2.75*len(w), 2), w.upper(), fill=0)
