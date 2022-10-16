@@ -2,6 +2,7 @@ import os
 from PIL import Image, ImageDraw
 import numpy as np
 
+
 def make_image(text, n_vowels, as_array=False):
     out = Image.new("L", (150, 16), 255)
     d = ImageDraw.Draw(out)

@@ -1,7 +1,6 @@
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras import layers
-# also pydot
 
 # flow: https://keras.io/examples/vision/image_classification_from_scratch/
 # model: https://keras.io/examples/vision/mnist_convnet/
@@ -11,9 +10,9 @@ batch_size = 32
 
 train_ds = tf.keras.preprocessing.image_dataset_from_directory(
     "./images",
-	labels="inferred",
-	label_mode="int",
-	class_names=["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"],
+    labels="inferred",
+    label_mode="int",
+    class_names=["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"],
     validation_split=0.2,
     subset="training",
     seed=1,
@@ -24,9 +23,9 @@ train_ds = tf.keras.preprocessing.image_dataset_from_directory(
 
 val_ds = tf.keras.preprocessing.image_dataset_from_directory(
     "./images",
-	labels="inferred",
-	label_mode="int",
-	class_names=["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"],
+    labels="inferred",
+    label_mode="int",
+    class_names=["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"],
     validation_split=0.2,
     subset="validation",
     seed=1,
@@ -57,7 +56,6 @@ def make_model(input_shape, num_classes):
 
 
 model = make_model(input_shape=image_size + (1,), num_classes=12)
-#keras.utils.plot_model(model, show_shapes=True)
 
 epochs = 25
 

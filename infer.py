@@ -25,7 +25,7 @@ predictions = model.predict(data)
 
 correct_guesses = 0
 for o, w in zip(range(predictions.shape[0]), args.words):
-    obs = predictions[o,:]
+    obs = predictions[o, :]
     reference = f"*** {w.upper():^10} has {vowelize(w):2} vowels ***"
     print(len(reference)*"*")
     print(reference)
