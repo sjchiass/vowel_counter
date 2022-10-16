@@ -12,6 +12,16 @@ When the training is done, you can give words to `infer.py` and see if it guesse
 
 After looking at `requirements.txt` to see if you're missing anything, run `nltk.download('words')` to get the English dictionary.
 
+## Files
+
+Here are the files' purposes
+
+  * `generator.py` reads all English words in `nltk` and saves them as 234,389 images
+  * `infer.py` takes a trained model and uses it to guess how many vowels there are in words you give it
+  * `make_image.py` a function for generating an image out of a word, either as a file or just a numpy array
+  * `ml.py` a simple model for classifying the images by vowel count, runs for 25 epoch
+  * `vowelize.py` calculates the number of vowels in a word, with extra logic for the letter `y`
+
 ## Test
 
 The following are the same words I use in `./tests/vowelize.py`. They should cover all cases of vowels.
