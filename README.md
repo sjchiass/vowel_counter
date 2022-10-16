@@ -1,12 +1,14 @@
-# Guessing vowels
+# Guessing vowels with an image classifier
 
 ## Principle
 
 Pillow is used to generate images from nltk's list of English words. The images are split into folders depending on their number of vowels.
 
-Keras is then used to train a model that classifies the images into vowel counts.
+![An example showing what DUDE looks like as an image](./DUDE.png)
 
-When the training is done, you can give words to `infer.py` and see if it guesses the number of vowels correctly.
+Keras is then used to train a model that classifies the images into vowel counts. This model has no prior information of what letters look like and which are vowels, so the classification is all "learned" during training.
+
+When the training is done, you can give words to `infer.py` and see if it guesses the number of vowels correctly. The longer the model runs, the better it gets.
 
 ## Installation
 
