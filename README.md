@@ -8,6 +8,10 @@ Keras is then used to train a model that classifies the images into vowel counts
 
 When the training is done, you can give words to `infer.py` and see if it guesses the number of vowels correctly.
 
+## Installation
+
+After looking at `requirements.txt` to see if you're missing anything, run `nltk.download('words')` to get the English dictionary.
+
 ## Test
 
 The following are the same words I use in `./tests/vowelize.py`. They should cover all cases of vowels.
