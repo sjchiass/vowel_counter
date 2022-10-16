@@ -7,5 +7,7 @@ def make_image(text, n_vowels, as_array=False):
     d.text((75-2.75*len(text), 2), text.upper(), fill=0)
     if as_array:
         return np.asarray(out)
-    else:
+    else:        
+        if not os.path.exists(f"./images/{n_vowels}"):
+            os.makedirs(f"./images/{n_vowels}")
         out.save(f"./images/{n_vowels}/{text}.png")
