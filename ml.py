@@ -57,9 +57,9 @@ def make_model(input_shape, num_classes):
 
 
 model = make_model(input_shape=image_size + (1,), num_classes=12)
-keras.utils.plot_model(model, show_shapes=True)
+#keras.utils.plot_model(model, show_shapes=True)
 
-epochs = 10
+epochs = 25
 
 callbacks = [
     keras.callbacks.ModelCheckpoint("save_at_{epoch}.h5"),

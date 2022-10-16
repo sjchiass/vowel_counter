@@ -23,11 +23,23 @@ for word in args.words:
 data = np.concatenate(data, axis=0)
 predictions = model.predict(data)
 
+correct_guesses = 0
 for o, w in zip(range(predictions.shape[0]), args.words):
     obs = predictions[o,:]
     print(f"*** {w.upper():10} has {vowelize(w):2} vowels ***")
     guess = np.argmax(obs.flatten())
-    print(f"--> Best guess is  {guess:2} {'PASS' if guess == vowelize(w) else 'FAIL'}   <--")
+    if guess == vowelize(w):
+        correct_guesses += 1
+        good_guess = True
+    else:
+        good_guess = False
+    print(f"--> Best guess is  {guess:2} {'PASS' if good_guess  else 'FAIL'}   <--")
     for n, i in enumerate(obs.flatten()):
         if f"{i:.2%}" != "0.00%":
             print(f"\-> % certain that '{w.lower()}' has {n} vowels: {i:6.2%}")
+score = f"%%% SCORE: {correct_guesses:2}/{len(args.words):2} ({correct_guesses/len(args.words):.2%}) %%%"
+if correct_guesses == len(args.words):
+    score = score.replace(" %%%", " GOOD BOI! %%%")
+print(len(score)*"%")
+print(score)
+print(len(score)*"%")
