@@ -3,9 +3,6 @@ from tensorflow import keras
 from tensorflow.keras import layers
 # also pydot
 
-# flow: https://keras.io/examples/vision/image_classification_from_scratch/
-# model: https://keras.io/examples/vision/mnist_convnet/
-
 image_size = (16, 160)
 batch_size = 32
 
@@ -20,7 +17,6 @@ train_ds = tf.keras.preprocessing.image_dataset_from_directory(
     color_mode="grayscale",
     image_size=image_size,
     batch_size=batch_size,
-    #label_mode = 'categorical',
 )
 
 print(train_ds.take(1))

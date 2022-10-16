@@ -2,6 +2,7 @@ import tensorflow as tf
 from tensorflow import keras
 from PIL import Image, ImageDraw, ImageFont
 import argparse
+from make_image import make_image
 
 parser = argparse.ArgumentParser(
     description="Guess the amount of vowels in a string (letter y is not well supported)")
@@ -12,15 +13,7 @@ args = parser.parse_args()
 
 model = keras.models.load_model(args.model)
 
-out = Image.new("L", (150, 16), 255)
-d = ImageDraw.Draw(out)
-d.text((75-2.75*len(args.word), 2), args.word.upper(), fill=0)
-out.save("./test.png")
-
-img = keras.preprocessing.image.load_img(
-    "test.png", target_size=(16,150), color_mode="grayscale"
-)
-img_array = keras.preprocessing.image.img_to_array(img)
+img_array = make_image(args.word, 0, as_array=True)
 img_array = tf.expand_dims(img_array, 0)  # Create batch axis
 
 predictions = model.predict(img_array)
